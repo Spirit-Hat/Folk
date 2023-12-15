@@ -1,0 +1,22 @@
+.body-box {
+  display: flex;
+  justify-content: center;
+
+  &.main {
+    .main-container {
+      padding: 0;
+    }
+  }
+
+  .main-container {
+    padding: 0 30px;
+
+  }
+}
+
+.main-container {
+  width: 100%;
+  max-width: 1680px;
+  display: block;
+  margin: 0 auto;
+}

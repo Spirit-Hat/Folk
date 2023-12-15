@@ -1,0 +1,57 @@
+<div class="admin-page-container">
+
+  <div class="side-panel-container admin-block">
+    <div class="side-bar">
+      <header>
+        <div class="btn-icon-contain title" routerLink="../" title="На головну">
+          <button class="header-btn-icon title">
+            <svg viewBox="0 0 31 100">
+              <path [attr.d]="svg.title"></path>
+            </svg>
+          </button>
+          <div class="title-contain">
+            <h3 class="title">Folkcraft</h3>
+            <h3 class="title handmade">Handmade</h3>
+          </div>
+        </div>
+      </header>
+        <section>
+          <button title="Перейти на добалення нового каталогу" class="btn-icon-contain section-btn"
+                  [class.--active]="currentRoute == 'ADD-CATALOG'" routerLink="add-catalog" (click)="savePath('ADD-CATALOG')">
+            Добавити каталог
+            <svg viewBox="0 0 100 100" width="25px" height="25px">
+              <path [attr.d]="svg.add_catalog"></path>
+            </svg>
+          </button>
+          <button title="Перейти на добалення нового продукту" class="btn-icon-contain section-btn"
+                  [class.--active]="currentRoute == 'ADD-PRODUCT'" routerLink="add-product" (click)="savePath('ADD-PRODUCT')">
+            Добавити новий товар
+            <svg viewBox="0 0 100 100" width="25px" height="25px">
+
+            </svg>
+          </button>
+          <button title="Перейти на добалення нового продукту" class="btn-icon-contain section-btn"
+                  [class.--active]="currentRoute == 'ORDERS'" routerLink="orders" (click)="savePath('ORDERS')">
+            Замовлення&nbsp;користувачів
+            <svg viewBox="0 0 100 100" width="25px" height="25px">
+              <path [attr.d]="svg.user_orders"></path>
+            </svg>
+          </button>
+        </section>
+        <div class="gap"></div>
+        <section>
+          <button class="btn-icon-contain danger-status section-btn" (click)="LOG_OUT()">
+            Вийти&nbsp;з&nbsp;аккаунту
+            <svg viewBox="0 0 100 100" width="26px" height="26px"><path [attr.d]="svg.log_out"></path></svg>
+          </button>
+        </section>
+    </div>
+  </div>
+
+  <div class="header-panel-block">
+    <div class="ng-content-block">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

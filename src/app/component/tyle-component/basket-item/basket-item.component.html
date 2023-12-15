@@ -1,0 +1,39 @@
+<div class="shopping-cart" [class.simple-view]="simpleView">
+  <div class="item-product" [class.last]="last">
+    <div class="button-menu">
+      <button *ngIf="!simpleView" mat-icon-button (click)="deleteEventEmit.emit(item.id)" title="Видалити">
+        <mat-icon>close</mat-icon>
+      </button>
+      <button *ngIf="!simpleView" mat-icon-button (click)="favoriteEventEmit.emit(item.id)" title="Добавити">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+    <div class="gap" *ngIf="!simpleView"></div>
+    <img [src]="item.previewImage" [alt]="item.name" class="product-img">
+    <div *ngIf="!simpleView" class="gap"></div>
+    <div class="description font">
+      <p>{{item.name}}</p>
+    </div>
+    <div *ngIf="simpleView" class="gap"></div>
+    <div class="price form" *ngIf="simpleView" >
+      <p class="sub-info">Ціна</p>
+      <p>{{item.price}}&nbsp;₴</p>
+    </div>
+    <div *ngIf="simpleView" class="gap"></div>
+    <div class="price form"*ngIf="simpleView" >
+      <p class="sub-info">Кількість</p>
+      <p>{{item.userAmount}}</p>
+    </div>
+    <div class="gap"></div>
+    <div *ngIf="!simpleView" class="panel">
+      <button [disabled]="item?.userAmount == item.amount"  (click)="changeCount(1)">+</button>
+      <p class="count">{{item.userAmount}}</p>
+      <button [disabled]="item?.userAmount == 1" (click)="changeCount(-1)">-</button>
+    </div>
+    <div class="price form">
+      <p class="sub-info">Сума</p>
+      <p>{{item.userAmount ? item.price * item.userAmount : item.price}}&nbsp;₴</p>
+    </div>
+  </div>
+</div>
+

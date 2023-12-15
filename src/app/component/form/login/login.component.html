@@ -1,0 +1,34 @@
+<div class="form-content">
+  <h2 *ngIf="title">{{name.login}}</h2>
+  <form [formGroup]="Form" class="form-block">
+
+    <fc-input-form [formControlVariable]="login"
+                   [inputElement]="inputLogin"
+                   [errorMessage]="alertLoginErrors(login)"
+                   label='Пошта або телефон'>
+      <input #inputLogin type="text" required autocomplete="off"
+             formControlName="login">
+    </fc-input-form>
+
+    <fc-input-form [formControlVariable]="password"
+                   [inputElement]="inputPassword"
+                   [errorMessage]="alertErrors.password(password)"
+                   label='Пароль'>
+      <input #inputPassword type="password" required autocomplete="off"
+             formControlName="password">
+    </fc-input-form>
+
+
+    <button [disabled]="isDisabled(Form)" class="form-btn status-btn btn-icon-contain --with-out-space" id="submit-button" type="submit"
+            (click)="loginForm()" [class]="{'success': loginBtnStatus && !Form.invalid,'disable': isDisabled(Form)}">
+      Увійти
+      <svg viewBox="0 0 100 100" width="25px">
+        <path [attr.d]="svg.log_in"></path>
+      </svg>
+    </button>
+
+    <div class="radio-input-container link-content">
+      <a class="link" (click)="openRegistrationPopup()">Немаєте ще аккаунту?</a>
+    </div>
+  </form>
+</div>

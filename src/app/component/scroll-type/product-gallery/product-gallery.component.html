@@ -1,0 +1,22 @@
+<div class="product-photo-gallery">
+  <div class="img-thumb-container">
+    <ul class="img-thumb">
+      <li tabindex="0" class="img-indicator" *ngFor="let src of itemList; let j = index" (click)="getNewPosition(j)" (focus)="getNewPosition(j)"
+          [class]="{'--active': currentImg === j}">
+        <img [src]="src" [alt]="'thumb'  + j" [attr.title]=" + ' index: ' + j">
+      </li>
+    </ul>
+  </div>
+  <div class="img-product-container">
+    <div class="img-container" (mouseover)="result.display='block'; zoomingEventEmitter.emit(result)"
+         (mouseleave)="result.display='none'; zoomingEventEmitter.emit(result)" #imgContainer
+         [style.width]="imgWidth + 'px'" [style.max-width]="imgWidth + 'px'">
+        <img  class="product-photo" *ngFor="let src of itemList; let i = index" (mouseover)="zoom($event, zoom_lens, imgContainer)"
+             [src]="src" [alt]=" + i" loading="lazy" [attr.title]="" [style.--offsetX]="getPosition(i)" />
+        <div class="img-zoom-lens" #zoom_lens (mousemove)="moveLens($event, zoom_lens, imgContainer)"></div>
+    </div>
+    <div class="scroll-bar" #scrollBar (scroll)="scrollBarEvent(scrollBar)">
+      <div class="scroll-content" [style.width]="itemList.length * imgWidth + 'px'"></div>
+    </div>
+  </div>
+</div>

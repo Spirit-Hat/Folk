@@ -1,0 +1,52 @@
+<div class="body-box">
+<div class="main-container">
+  <div class="product-page-block">
+    <fc-product-gallery
+                        [heightRender]="box.offsetWidth"
+                        (zoomingEventEmitter)="resultChangeEmit($event, zoomResultBox)">
+
+    </fc-product-gallery>
+    <div class="info-product" #box >
+      <header class="box" *ngIf="product">
+        <h1 class="primary-title">{{product.name}}</h1>
+        <div class="price-box">
+          <p class="old-price" *ngIf="product.oldPrice">{{product.oldPrice}}&nbsp;₴</p>
+          <p class="primary-price">{{product.price}}&nbsp;₴</p>
+          <p class="status"
+             [class]="{'access': product.status == 'AVAILABLE','danger': product.status == 'NOT_AVAILABLE',
+           'expected': product.status == 'EXPECTED'}">{{getStatusProduct()}}</p>
+
+        </div >
+        <p class="sum" *ngIf="product.userAmount && product.userAmount > 1">
+          Загальна сума: {{product.price * product.userAmount }}&nbsp;₴
+        </p>
+      </header>
+      <div class="menu-box">
+        <div class="panel" *ngIf="product">
+          <button [disabled]="product?.userAmount == 1" (click)="changeCount(-1)">
+            -
+          </button>
+          <p class="count">
+            {{product?.userAmount}}
+          </p>
+          <button [disabled]="product.userAmount == product.amount" (click)="changeCount(1)">
+            +
+          </button>
+        </div>
+        <button class="basket-btn" (click)="addToBasket()">
+          Додати в кошик
+        </button>
+      </div>
+      <div class="box description-box" *ngIf="product">
+        <h2>
+Опис
+        </h2>
+        <p>
+          {{product.description}}
+        </p>
+      </div>
+      <div class="zoom-result-box" #zoomResultBox></div>
+    </div>
+  </div>
+</div>
+</div>

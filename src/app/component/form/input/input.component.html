@@ -1,0 +1,16 @@
+<div class="form-container">
+  <div class="form-input-container" tabindex="1"
+       (focus)="inputElement.focus()"
+       [class]="{
+            '--disabled': inputElement.hasAttribute('readonly'),
+            '--selected': toggleFocus,
+            '--focus-in': toggleFocus || notNull,
+            'outline': toggleFocus,
+            '--with-out-label': !label
+          }">
+    <label *ngIf="label"><p>{{label}}: </p></label>
+    <ng-content>
+
+    </ng-content>
+  </div>
+</div>

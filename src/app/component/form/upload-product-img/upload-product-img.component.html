@@ -1,0 +1,46 @@
+<div class="box-container">
+  <div #dropImgContainer class="drop-img-container"
+       (drop)="dropFileList($event, dropImgContainer)"
+       (dragover)="dropImgContainer.classList.add('dragover')"
+       (dragleave)="dropImgContainer.classList.remove('dragover')"
+       (click)="inputImgFiles.click()">
+    <div  class="drop-img-information-container --active" *ngIf="fileList">
+      <div class="round-btn-header" *ngIf="!fileList[0] || fileList[0] == ''">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+          <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"/>
+        </svg>
+        <h1>Завантажити&nbsp;зображення</h1>
+        <h3>Клацніть&nbsp;або&nbsp;перетягніть&nbsp;зоображення</h3>
+      </div>
+    </div>
+    <img [src]="fileList[0]" alt="uploading img 0"
+         *ngIf="fileList && fileList[0] && fileList[0] != ''"
+         draggable="true" (dragstart)="startDragImg(0)"
+         >
+  </div>
+</div>
+<div class="upload-img-grid">
+  <ng-container *ngFor="let img of  extendedFiles() let i = index">
+    <div class="upload-box-img" (drop)=" dropFile($event, i, img)" (click)="selectIndex=i; inputImgFile.click();"
+         *ngIf="i!=0">
+      <div *ngIf="img && img != ''" class="img-product-container"
+           (drop)="swapImg($event, img)">
+        <img [src]="img" [id]="i" [alt]="'uploading photo '+ i"
+             draggable="true" (dragstart)="startDragImg(i)"
+             >
+        <button class="remove btn-icon" (click)="deleteImg(i)" title="Видалити">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20px" height="20px">
+            <path
+              d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<input #inputImgFiles type="file" accept="image/jpeg, image/webp" [style.display]="'none'" multiple
+       (change)="uploadFileList($event, inputImgFiles)">
+
+<input #inputImgFile type="file" accept="image/jpeg, image/webp" [style.display]="'none'"
+       (change)="uploadFile($event, inputImgFile)">

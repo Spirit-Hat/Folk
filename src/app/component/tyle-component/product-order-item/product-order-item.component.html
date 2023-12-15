@@ -1,0 +1,66 @@
+<ng-container  *ngFor="let item of orders">
+  <tr class="product-order-item" [id]="item.id">
+
+    <td class="img-item">
+      <div class="img-container">
+        <img [src]="item.productList[0].previewImage" width="140px"
+             [alt]="item.productList[0].name" (click)="currentId != item.id && item.productList.length > 1 ? currentId=item.id : currentId = undefined ">
+      </div>
+    </td>
+
+    <td class="product-name">
+      <div>
+        <p>{{item.id}}</p>
+        <p>{{item.orderDate}}</p>
+        <button class="product-name" (click)="currentId != item.id && item.productList.length > 1 ? currentId=item.id : currentId = undefined ">{{item.productList.length == 1 ? item.productList[0].name: 'В&nbsp;замовлені&nbsp;ще&nbsp;' + item.productList.length}}</button>
+      </div>
+    </td>
+
+    <td class="total-price">
+      <p><b>{{item.totalPrice}}&nbsp;₴</b></p>
+      <p>{{item.totalAmount}}&nbsp;шт.</p>
+    </td>
+
+    <td class="person-item" *ngIf="!simpleView">
+      <p><b>{{item.person.firstName}}&nbsp;{{item.person.lastName}}</b></p>
+      <p>{{item.person.phone}}</p>
+      <p>{{item.person.email}}</p>
+    </td>
+
+    <td class="delivery-type">
+      <p>{{item.eDeliveryType}}</p>
+      <p>Готівка</p>
+    </td>
+
+    <td class="status-item">
+      <select *ngIf="!simpleView">
+        <option *ngFor="let status of list" [value]="status">
+          {{getValue(status)}} {{status}}
+        </option>
+      </select>
+      <p *ngIf="simpleView">{{item.orderStatus}}</p>
+    </td>
+
+  </tr>
+
+  <ng-container *ngFor="let product of item.productList">
+    <tr *ngIf="currentId == item.id" class="product-order-item child-item">
+      <td class="img-item">
+        <div class="img-container">
+          <img [src]="product.previewImage" width="120px"
+               [alt]="product.name">
+        </div>
+      </td>
+      <td>
+        <p class="product-name">{{product.name}}</p>
+      </td>
+      <td>
+        <p *ngIf="product.amount">{{product.price * product.amount}}&nbsp;₴</p>
+        <p>{{product.amount}}&nbsp;шт.</p>
+      </td>
+      <td colspan="3" *ngIf="!simpleView"></td>
+      <td colspan="2" *ngIf="simpleView"></td>
+    </tr>
+  </ng-container>
+
+</ng-container>

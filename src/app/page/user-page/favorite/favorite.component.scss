@@ -1,0 +1,6 @@
+.grid-panel {
+  padding: 20px 30px;
+  display: grid;
+  grid-row-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(min(330px, 16vmax), 1fr));
+}

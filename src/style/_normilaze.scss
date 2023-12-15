@@ -1,0 +1,63 @@
+body {
+  width: 100%;
+  max-width: 100%;
+  min-width: 480px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+body, div, ul, p{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*:focus{
+  outline: none;
+}
+button{
+  cursor: pointer;
+}
+
+input, select, button, textarea {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: Helvetica, sans-serif;
+
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+
+
+  &.max-width {
+    max-width: unset !important;
+    width: 100% !important;
+  }
+
+  &:hover, &:focus, &:active {
+    outline: 0;
+    outline-offset: 0;
+  }
+
+  &::placeholder, [title] {
+    color: inherit;
+    font-size: inherit;
+  }
+}
+textarea{
+  margin-top: 30px;
+  resize: vertical;
+}
+input[type=radio]{
+  display: none;
+}
+ul {
+  list-style: none;
+}

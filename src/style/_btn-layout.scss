@@ -1,0 +1,71 @@
+@mixin btn-icon{
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  opacity: 0.85;
+  border-radius: 6px;
+  --icon-color: #211714;
+  &:hover{
+    opacity: 1;
+  }
+}
+button.header-btn-icon {
+  @include btn-icon;
+  padding: 0;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  transition: background-color 300ms ease-in-out;
+  --icon-padding: 0px;
+  &.round{
+    --icon-padding: 3px;
+    --icon-height: calc(36px);
+    border-radius: 100%;
+    svg{
+      padding: 6px;
+    }
+    padding: var(--icon-padding);
+    &:hover{background-color: var(--primary-title-color)}
+  }
+  &.title{
+    --icon-color: #f69428;
+    --icon-height: 100px;
+  }
+}
+button.header-btn-icon, button.btn-icon, .btn-icon-contain{
+  svg {
+    fill: var(--icon-color);
+    height: var(--icon-height);
+    transition: fill 300ms ease-in-out;
+  }
+}
+
+button.btn-icon, div.btn-icon{
+ @include btn-icon;
+  justify-content: center;
+  --icon-height: 16px;
+  &.title{
+    --icon-color: #f69428;
+    --icon-height: 100px;
+  }
+  &.back{
+    pointer-events: none;
+  }
+}
+button.btn-icon-contain, div.btn-icon-contain, li.btn-icon-contain{
+  justify-content: space-between;
+  margin: 0;
+  @include btn-icon;
+  padding: 0;
+  grid-column-gap: 6px;
+  &.--with-out-space{
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    .svg{
+      margin-bottom: 20px;
+    }
+  }
+  &.title{
+    justify-content: unset;
+  }
+}

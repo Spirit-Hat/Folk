@@ -1,0 +1,102 @@
+<div class="form-container">
+
+  <section class="form">
+    <form [formGroup]="mainForm" class="main-form-block block-system">
+        <div class="container left-menu">
+
+          <fc-add-catalog></fc-add-catalog>
+
+          <div class="form-block-container">
+            <header>
+              <h1>Додати&nbsp;новий&nbsp;товар</h1>
+              <div class="gap"></div>
+              <button class="form-btn status-btn success --sub --round" (click)="saveData()">
+                Зберегти
+              </button>
+              <button class="form-btn status-btn danger --sub --round" (click)="clearData()" type="reset">
+                Очистити
+              </button>
+            </header>
+            <h3 id="name-and-price">Основна інформація</h3>
+            <fc-input-form [formControlVariable]="mainForm.controls['product-name']"
+                           [inputElement]="inputName"
+                           [errorMessage]="alertErrors.name(name)"
+                           label='Повна назва продукту'>
+              <input #inputName type="text" id="productName" required autocomplete="off"
+                     formControlName="product-name">
+            </fc-input-form>
+            <fc-input-form [formControlVariable]="price"
+                           [inputElement]="inputPrice"
+                           [errorMessage]="alertErrors.commonTip(price)"
+                           label='Ціна продукту'>
+              <input #inputPrice type="number" class="clean max-width" id="price" required autocomplete="off"
+                     formControlName="price">
+            </fc-input-form>
+            <fc-input-form [formControlVariable]="amount"
+                           [inputElement]="inputAmount"
+                           [errorMessage]="alertErrors.commonTip(amount)"
+                           label='Кількість'>
+              <input #inputAmount type="number" class="clean max-width" id="amount" required autocomplete="off"
+                     formControlName="amount">
+            </fc-input-form>
+            <div>
+              <h3>
+                Додати опис
+              </h3>
+              <fc-input [inputElement]="textAreaForm" [label]="'Опис товару'">
+                <textarea rows="5" #textAreaForm [formControlName]="'description'"></textarea>
+              </fc-input>
+            </div>
+            <h3>Оберіть статус продукта і каталог</h3>
+            <div class="form-inputs-container">
+<!--              <select #selectForm (change)="status.value = selectForm.value">-->
+<!--                <option *ngFor="let key of list.keys(EProductStatus)" [value]="key" selected>-->
+<!--                  {{getValue(key)}}-->
+<!--                </option>-->
+<!--              </select>-->
+              <select formControlName="status">
+                  <option *ngFor="let status of getProductStatus()" [value]="status.key" [ngValue]="status.key" selected>
+                  {{status.value}}
+                </option>
+              </select>
+            </div>
+            <div class="form-inputs-container">
+              <select formControlName="category">
+                <option *ngFor="let category of categoryList" [value]="category.id" [ngValue]="category.id" selected>
+                  {{category.name}}
+                </option>
+                <input placeholder="Створити нову категорію">
+              </select>
+            </div>
+            <div class="btn-menu">
+              <button [disabled]="mainForm.invalid" class="status-btn form-btn" type="submit"
+                      [class]="{'success': !mainForm.invalid, 'disabled': mainForm.invalid}"
+                      (click)="addNewProduct()">Створити
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="container side-menu">
+          <h2>
+            Вигляд продукту
+          </h2>
+          <div class="tile-product">
+            <fc-product-tile
+              [item]="buildTestItemProduct()"
+              [simpleView]="true"
+            >
+            </fc-product-tile>
+          </div>
+          <h2>
+            Галерея
+          </h2>
+          <fc-upload-product-img
+            [fileList]="getImgFiles()"
+            (fileImgEmitter)="uploadImg($event)">
+          </fc-upload-product-img>
+
+        </div>
+      </form>
+  </section>
+</div>

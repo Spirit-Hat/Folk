@@ -1,0 +1,65 @@
+<div class="form-block-container">
+  <header>
+    <h1>Добавити новий каталог</h1>
+  </header>
+  <div class="catalog-list">
+    <h3>Список категорій</h3>
+    <ul>
+      <li *ngFor="let category of categoryList">
+        <ng-container *ngIf="category.id != selectedId">
+          <fc-input [inputElement]="inputElement" [value]="category.name">
+            <input #inputElement [readOnly]="true">
+          </fc-input>
+          <button class="submit-box-btn btn-icon-contain rename" (click)="selectedId = category.id">
+            Редагувати
+            <svg viewBox="0 0 100 100" width="20px">
+              <path [attr.d]="svg.rename_pen"></path>
+            </svg>
+          </button>
+        </ng-container>
+
+        <ng-container *ngIf="category.id == selectedId">
+          <button mat-icon-button (click)="deleteCategory(selectedId)" title="Видалити">
+            <mat-icon>close</mat-icon>
+          </button>
+        </ng-container>
+
+        <ng-container *ngIf="category.id == selectedId">
+          <form class="form-block row" [formGroup]="renameFormCatalog">
+
+            <fc-input-form [inputElement]="inputElement"
+                           [formControlVariable]="selectCatalog"
+                           [errorMessage]="alertErrors.name(selectCatalog)" [value]="category.name">
+              <input class="--with-out-label" type="text" #inputElement id="rename-category" required autocomplete="off" formControlName="select-catalog">
+            </fc-input-form>
+
+            <button [disabled]="renameFormCatalog.invalid" class="btn-icon-contain submit-box-btn status-btn form-btn"
+                    [class]="{'success': !renameFormCatalog.invalid, 'disabled': renameFormCatalog.invalid}"
+                    (click)="renameCatalog()">Перейменувати
+              <svg viewBox="0 0 100 100" width="20px">
+                <path [attr.d]="svg.save_pen"></path>
+              </svg>
+            </button>
+          </form>
+        </ng-container>
+      </li>
+    </ul>
+    <h3>
+      Нова категорія
+    </h3>
+    <div class="form-container">
+      <form class="form-block" [formGroup]="formCatalog">
+        <fc-input-form [inputElement]="inputElement" [label]="'Створити нову категорію'"
+                       [formControlVariable]="catalog"
+                       [errorMessage]="alertErrors.name(catalog)">
+          <input type="text" #inputElement id="new-category" required autocomplete="off" formControlName="catalog">
+        </fc-input-form>
+        <button [disabled]="formCatalog.invalid" class="status-btn form-btn" type="submit"
+                [class]="{'success': !formCatalog.invalid, 'disabled': formCatalog.invalid}"
+                (click)="addNewCatalog()">Створити
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+

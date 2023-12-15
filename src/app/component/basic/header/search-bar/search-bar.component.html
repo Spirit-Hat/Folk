@@ -1,0 +1,4 @@
+<div class="search-bar-container" tabindex="1" (focus)="searchBar.focus()">
+  <input #searchBar maxlength="100" type="text" title="Пошукач товарів" placeholder="Я шукаю...">
+  <button class="btn-icon" (click)="searchRequest(searchBar.value)"><svg viewBox="0 0 100 100"><path [attr.d]="svg.search_loup"></path></svg></button>
+</div>

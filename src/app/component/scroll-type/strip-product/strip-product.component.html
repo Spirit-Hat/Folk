@@ -1,0 +1,21 @@
+<div #carousel class="carousel-container" [style.--count-visible]="visibleCount">
+  <button class="btn-slider prev-btn-icon hover" [attr.data-title]="'Назад'" *ngIf="offsetScale != 0"
+          (click)="offsetScale = offsetScale + 1; isEndLine()">
+    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 100 100">
+        <path [attr.d]="svg.arrow_prev"/>
+    </svg>
+  </button>
+
+  <div class="grid-carousel" [style.--offset]="calculateOffset() + 'px'">
+    <div class="tile" *ngFor="let item of data; let i= index;">
+      <fc-product-tile [item]="item" [routingPath]="'/catalog/catalog/'+ item.id"></fc-product-tile>
+    </div>
+  </div>
+  <button class="btn-slider next-btn-icon hover" [attr.data-title]="'Далі'" *ngIf="!end"
+          (click)="offsetScale = offsetScale -1; isEndLine()">
+    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 100 100">
+      <path [attr.d]="svg.arrow_next"></path>
+    </svg>
+  </button>
+</div>
+

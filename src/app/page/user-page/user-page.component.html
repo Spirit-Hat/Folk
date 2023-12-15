@@ -1,0 +1,37 @@
+<div class="body-box">
+  <div class="main-container">
+    <div class="side-panel-container">
+      <div class="side-bar">
+        <header>
+
+        </header>
+        <section>
+          <button title="Перейти на добалення нового каталогу" class="btn-icon-contain section-btn" routerLink="orders">
+            Мої замовлення
+            <svg viewBox="0 0 100 100" width="25px" height="25px">
+              <path [attr.d]="svg.user_orders"></path>
+            </svg>
+          </button>
+          <button title="Перейти на добалення нового продукту" class="btn-icon-contain section-btn" routerLink="favorite">
+            Список бажань
+            <svg viewBox="0 0 100 100" width="25px" height="25px">
+              <path [attr.d]="svg.favorite"></path>
+            </svg>
+          </button>
+        </section>
+        <div class="gap"></div>
+        <section>
+          <button title="Вийти з акаунту" class="btn-icon-contain section-btn" (click)="logout()">
+            Вийти
+            <svg viewBox="0 0 100 100" width="25px" height="25px">
+              <path [attr.d]="svg.log_out"></path>
+            </svg>
+          </button>
+        </section>
+      </div>
+    </div>
+    <section class="child-container">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>

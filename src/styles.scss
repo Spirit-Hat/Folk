@@ -1,0 +1,21 @@
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "style/fonts";
+@import "style/normilaze";
+@import "style/variable";
+@import "style/popup-layout";
+@import "style/header-box-layout";
+@import "style/btn-layout";
+
+.form-container {
+  .form-input-container{
+    input{
+      width: 100%;
+      height: 100%;
+      font-size: 1.45em;
+      text-indent: 2px;
+    }
+  }
+}
+fc-product-tile{
+  max-width: 300px;
+}

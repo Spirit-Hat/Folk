@@ -1,0 +1,66 @@
+@import "src/style/form-controller";
+@import "src/style/input-form-layout";
+.body-box{
+  background-image: var(--light-linear-gradient);
+  position: relative;
+}
+.main-container{
+  max-width: 1400px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .form-block{
+    max-width: 1000px;
+    flex-grow: 1;
+  }
+  section.checkout-form{
+    padding: 20px 30px;
+    position: sticky;
+    top: 150px;
+    width: 100%;
+    min-width: 300px;
+    margin: 30px 20px 0 ;
+    border: 1px solid var(--grid-border-color);
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 12px;
+
+    .line{
+      height: 2px;
+
+      display: flex;
+      align-items: center;
+      ;
+      &:after{
+        content: "";
+        margin: 4px 20px;
+        width: 100%;
+        height: inherit;
+        background-color: #f6f6f6;
+      }
+    }
+  }
+}
+.text-container{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1272px){
+  .main-container{
+    flex-direction: column;
+    section.checkout-form{
+      margin: 0;
+      width: unset;
+    }
+    .form-block{
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,185 @@
+.form-inputs-container {
+  --outline-radius: 3px;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-column-n), 1fr);
+  flex-direction: row;
+  grid-column-gap: 20px;
+  grid-row-gap: 15px;
+}
+
+.form-content {
+  position: relative;
+  padding: max(2.5vh, 20px) max(2.5vw, 20px);
+  > *{
+    padding: 0 20px;
+  }
+  overflow-y: auto;
+  &.popup-content{
+    .border-box{
+      border: none !important;
+      .status-btn{
+        background-color: unset !important;
+      }
+    }
+  }
+}
+
+.form-block, .input-panel {
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 20px;
+  section{
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 20px;
+  }
+  &.row{
+    display: flex;
+    flex-direction: row;
+    grid-column-gap: 12px;
+    align-items: flex-start;
+  }
+  input[type=text], input[type=password], input[type=email], input[type=number] {
+    background-color: var(--bg-theme-color);
+    border-radius: 3px;
+    opacity: 0.85;
+    text-indent: 0.25rem;
+    width: 100%;
+    padding: 6px 0;
+    font-size: 1.2rem;
+    transition: opacity 120ms ease-in-out;
+    &.--with-out-label{
+      padding: 1px 2px;
+      font-size: 1.45em;
+      text-indent: 2px;
+    }
+    &:focus {
+      opacity: 1
+    }
+  }
+
+  input[type=number] {
+    max-width: 200px;
+    text-indent: 10px;
+  }
+}
+.btn-menu{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+  margin-top: 10px;
+  &.--with-out-space{
+    justify-content: unset;
+  }
+  > div{
+    flex-grow: 1;
+  }
+}
+.form-btn{
+  margin-bottom: 4px;
+  opacity: 0.6;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  &.--sub{
+    max-width: 220px;
+    margin-bottom: 0;
+  }
+  &.--round{
+    border-radius: 40px;
+    border: 2px solid var(--br-color);
+  }
+  &[type=submit]{
+    max-width: 100%;
+    width: 100%;
+    font-size: 20px;
+    padding: 0.35rem;
+  }
+  &:not(:disabled):hover {
+    opacity: 1;
+  }
+  &.status-btn {
+    background-color: var(--theme-btn-color);
+    color: var(--color);
+
+    &.disabled, &:disabled {
+      --theme-btn-color: var(--disable-bg-color);
+      --color: var(--disable-font-color);
+      --br-color: var(--disable-br-color);
+      --icon-color: var(--disable-font-color);
+    }
+
+    &.success {
+      --theme-btn-color: var(--success-bg-color);
+      --color: var(--success-font-color);
+      --br-color: var(--success-br-color);
+      --icon-color: var(--success-font-color);
+    }
+    &.danger{
+      --theme-btn-color: var(--danger-bg-color);
+      --color: var(--danger-font-color);
+      --br-color: var(--danger-br-color);
+      --icon-color: var(--danger-font-color);
+    }
+    &.common{
+      --theme-btn-color: #f6f6f6;
+      --br-color: var(--grid-border-color);
+      &.--active, &:active{
+        outline: 1px solid #277f9a;
+      }
+    }
+  }
+}
+
+
+
+.radio-input-container {
+  font-size: 1.12rem;
+  cursor: pointer;
+
+  &.link-content {
+    text-align: right;
+
+  }
+
+  label {
+    font-size: 1.1rem;
+  }
+}
+
+a.link {
+  opacity: 0.75;
+  color: var(--focus-br-color);
+  text-decoration: none;
+
+  &:hover, &:focus, &:active {
+    opacity: 1;
+  }
+}
+
+
+
+@media screen and (max-width: 1080px) {
+  .form-inputs-container {
+    grid-template-columns: unset;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .popup-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .primary-box{
+      min-height: 100px;
+    }
+  }
+}
+@media screen and (max-width: 900px){
+  .btn-menu{
+    flex-direction: column;
+  }
+
+}

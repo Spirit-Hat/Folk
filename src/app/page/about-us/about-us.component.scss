@@ -1,0 +1,36 @@
+section{
+  padding: 30px 0;
+  background-image: var(--light-linear-gradient);
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .horizontal-line{
+    width: max(80%, 200px);
+    margin: 10px 0;
+    background-color: var(--grid-border-color);
+    height: 2px;
+    border: 6px;
+  }
+  .main-box{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .text-block{
+    max-width: 600px;
+    margin-left: 5%;
+    margin-right: 20px;
+    p{
+      text-indent: 12px;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      text-align: justify;
+    }
+  }
+  img{
+    margin: 10px 5% 10px 0;
+    max-height: 600px;
+    height: 400px;
+  }
+}

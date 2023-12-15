@@ -1,0 +1,21 @@
+<div class="product-tile">
+  <div class="img-product-container" [routerLink]="'/catalog/catalog/'+ item.id">
+    <div class="blink-hover">
+      <img [alt]="item.name" [src]="item.previewImage" [title]="item.name">
+    </div>
+
+  </div>
+  <h3>{{item.name}}</h3>
+  <div class="bottom-product-tile">
+    <div class="tex-block">
+      <p class="product-status" [style.color]="item.status == 'AVAILABLE' ? 'var(--acess)' : 'var(--not-acess)'">
+        {{getProductStatus()}}
+      </p>
+      <p class="price">{{item.price}}</p>
+    </div>
+    <button *ngIf="!simpleView" class="header-btn-icon basket-btn" [title]="hasIn() ? 'Товар вже в кошику' : disabled() ? 'Товар відсутній' : 'Покласти в кошик '+item.name" (click)="putInBasket()"
+            [class]="{'has-in': hasIn(), 'disabled': disabled()}">
+      <svg viewBox="0 0 100 100" width="30px" height="30px"><path [attr.d]="hasIn() ? svg.shopping_card_check : disabled() ? svg.shopping_card_disabled : svg.shopping_card"></path></svg>
+    </button>
+  </div>
+</div>

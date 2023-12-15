@@ -1,0 +1,27 @@
+@import "./src/style/btn-slider-layout";
+
+.carousel-container {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+
+  &.moving .grid-carousel > .tile {
+    transition: none;
+  }
+
+  .btn-slider {
+    z-index: 1;
+  }
+}
+
+.grid-carousel {
+  z-index: 2;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(100% / var(--count-visible));
+  .tile {
+    transition: transform 200ms ease-in-out;
+    transform: translateX(var(--offset));
+  }
+}

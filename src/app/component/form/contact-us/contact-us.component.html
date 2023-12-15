@@ -1,0 +1,49 @@
+<div class="form-content">
+  <h2 *ngIf="title">{{name.contact_us}}</h2>
+  <form [formGroup]="Form" class="form-block">
+
+    <div class="form-inputs-container" style="--grid-column-n: 2">
+
+      <fc-input-form [formControlVariable]="firstName"
+                     [inputElement]="inputFirstName"
+                     [errorMessage]="alertErrors.name(firstName)"
+                     [label]="'Ім\'я'">
+        <input #inputFirstName type="text" required autocomplete="off" formControlName="firstName">
+      </fc-input-form>
+
+      <fc-input-form [formControlVariable]="secondName"
+                     [inputElement]="inputSecondNameForm"
+                     [errorMessage]="alertErrors.name(secondName)"
+                     [label]="'Фамілія'">
+        <input #inputSecondNameForm type="text" required autocomplete="off" formControlName="secondName">
+      </fc-input-form>
+    </div>
+    <fc-input-form [formControlVariable]="email"
+                   [inputElement]="inputEmail"
+                   [errorMessage]="alertErrors.email(email)"
+                   [label]="'Пошта'">
+      <input #inputEmail type="email" required autocomplete="off" formControlName="email">
+    </fc-input-form>
+
+    <fc-input-form [formControlVariable]="titleMail"
+                   [inputElement]="inputTitle"
+                   [errorMessage]="alertErrors.commonTip(titleMail)"
+                   label='Заголовок'>
+      <input #inputTitle type='text' required autocomplete="off" formControlName="titleMail">
+    </fc-input-form>
+
+    <fc-input [inputElement]="textAreaForm" [label]="'Повідомлення'">
+      <textarea rows="5" #textAreaForm formControlName="message"></textarea>
+    </fc-input>
+
+    <div class="border-box" tabindex="3" [class]="
+      {
+        'success': !Form.invalid,
+        'disable': Form.invalid
+      }">
+      <button [disabled]="Form.invalid" class="status-btn" type="submit"
+              (click)="contactForm()">Відправити повідовлення
+      </button>
+    </div>
+  </form>
+</div>

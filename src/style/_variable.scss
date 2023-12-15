@@ -1,0 +1,37 @@
+body{
+  --grid-border-color: rgba(52, 52, 52, 0.5);
+  --top-header-bar-color: hsla(0, 19%, 25%, 1);
+  --header-bar-color: hsla(0, 24%, 47%, 1);
+  --primary-title-color: rgba(255, 202, 142, 0.91);
+  --primary-color: #b95653;
+  --primary-bold-color: #7a1538;
+  --white-color: white;
+  --basket-color: rgba(142, 195, 255, 0.91);
+  --light-top-bg-color: rgb(253, 241, 229);
+  --light-linear-gradient: linear-gradient(180deg,  var(--light-top-bg-color) 0%, rgb(225, 193, 183) 100%);
+
+  --gray-theme-color: #b7b4b4;
+  --focus-outline-color: rgba(52, 126, 199, 0.5);
+  --focus-br-color: #1a1f2a;
+  --focus-font-ligth-color: #277f9a;
+
+  --footer-top-main-bar: #322020;
+  --footer-bottom-bar: #4B3333;
+  --cover-color: var(--white-color);
+  --acess: #689f48;
+  --not-acess: #c95151;
+
+  --font-color: #262524;
+
+  --danger-br-color: #281b1f;
+  --danger-bg-color: rgba(230, 195, 195, 0.7);
+  --danger-font-color: #5b202b;
+
+  --success-br-color: #262f21;
+  --success-bg-color: rgba(216, 230, 195, 0.7);
+  --success-font-color: #65851a;
+
+  --disable-br-color: #21202c;
+  --disable-bg-color: rgba(186, 186, 186, 0.7);
+  --disable-font-color: #636365;
+}

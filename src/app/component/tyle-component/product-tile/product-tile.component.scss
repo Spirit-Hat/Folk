@@ -1,0 +1,83 @@
+.product-tile{
+  height: 100%;
+  width: 100%;
+  padding: 10px 6px;
+  position: relative;
+  color: var(--font-color);
+  display: inline-flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .bottom-product-tile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column-gap: 20px;
+    width: 100%;
+    padding-right: 20px;
+
+    .basket-btn {
+      &.has-in {
+        --icon-color: var(--primary-bold-color);
+      }
+      &.disabled {
+        --icon-color: var(--grid-border-color);
+      }
+    }
+  }
+  .img-product-container{
+    width: 100%;
+    max-width: min(225px, calc(300px - 12px));
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    .blink-hover{
+      display: flex;
+      justify-content: center;
+      max-width: 280px;
+      position: relative;
+      &:after{
+        border-radius: 6px;
+        opacity: 1;
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        background-color: rgba(0,0,0,0.1);
+        content: "";
+        width: 100%;
+        transition: opacity 120ms ease-in-out;
+      }
+    }
+
+    &:hover .blink-hover:after{
+      opacity: 0;
+    }
+    margin-bottom: 10px;
+    img{
+      max-height: 225px;
+      width: 100%;
+      border-radius: 6px;
+
+    }
+  }
+
+  p.price{
+    font-family: Roboto Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 1.2em;
+    &::after{
+      margin-left: 4px;
+      content: "₴";
+    }
+  }
+  p.product-status{
+    font-weight: 550;
+    font-size: 1.1em;
+  }
+  h3{
+    margin: 0;
+    margin-bottom: 10px;
+  }
+}

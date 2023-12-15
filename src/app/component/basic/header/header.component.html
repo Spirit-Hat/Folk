@@ -1,0 +1,46 @@
+<div class="body-box top-header-bar header-bar">
+  <div class="main-container">
+    Free Delivery: Take advantage of our time to save event
+  </div>
+</div>
+<header class="body-box header-nav-bar header-bar">
+  <div class="main-container header-nav-bar">
+    <button class="btn-icon-contain title" routerLink="../" title="На головну">
+      <button class="header-btn-icon title">
+        <svg viewBox="0 0 31 100"><path [attr.d]="svg.title"></path></svg>
+      </button>
+      <div class="title-contain">
+        <h3 class="title">Folkcraft</h3>
+        <h3 class="title handmade">Handmade</h3>
+      </div>
+    </button>
+    <div class="search-panel">
+      <select #selectCatalog (change)="selectCatalogBar(selectCatalog.value)">
+        <option selected disabled style="display: none">Каталог товарів</option>
+        <option *ngFor="let subCatalog of catalogData" [value]="subCatalog.id">{{subCatalog.name}}</option>
+      </select>
+      <div class="vertical-line">
+      </div>
+      <fc-search-bar></fc-search-bar>
+    </div>
+    <div class="btn-menu">
+      <ng-container *appRole="['ROLE_USER']">
+        <button (click)="favorite()" title="Улюблені" class="header-btn-icon round"><svg viewBox="0 0 100 100"><path [attr.d]="svg.favorite"></path></svg></button>
+      </ng-container>
+      <button (click)="login()" title="Увійти" class="header-btn-icon round"><svg viewBox="0 0 100 100"><path [attr.d]="svg.user"></path></svg></button>
+      <button (click)="basket()" title="Кошик" class="header-btn-icon round"><svg viewBox="0 0 100 100"><path [attr.d]="svg.shopping_card"></path></svg></button>
+    </div>
+  </div>
+</header>
+<nav class="body-box bottom-header-bar header-bar">
+  <div class="main-container">
+    <ul>
+      <li class="nav-link-btn" tabindex="2" routerLink="catalog">Каталог</li>
+      <li class="nav-link-btn" tabindex="2" routerLink="../">На головну</li>
+      <li class="nav-link-btn" tabindex="2" routerLink="about-us">Про нас</li>
+      <li (click)="contactUs()" class="nav-link-btn" tabindex="2" >Зв'язатися з нами</li>
+      <li class="nav-link-btn" tabindex="2" routerLink="help">Поширені питання</li>
+    </ul>
+    <p class="hot-line">Гаряча лінія +380 0937 536 384</p>
+  </div>
+</nav>

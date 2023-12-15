@@ -1,0 +1,63 @@
+<div class="form-content">
+  <h2 *ngIf="title">{{name.registration}}</h2>
+  <form [formGroup]="Form" class="form-block">
+
+    <fc-input-form [formControlVariable]="login"
+                    [inputElement]="inputUserName"
+                    [errorMessage]="alertErrors.login(login)"
+                    [label]="'Ім\'я користувача'">
+      <input #inputUserName type="text" id="login" autocomplete="off" formControlName="login">
+    </fc-input-form>
+    <div class="form-inputs-container" style="--grid-column-n: 2">
+
+      <fc-input-form [formControlVariable]="firstName"
+                      [inputElement]="inputFirstName"
+                      [errorMessage]="alertErrors.name(firstName)"
+                      [label]="'Ім\'я'">
+        <input #inputFirstName type="text" required autocomplete="off" formControlName="firstName">
+      </fc-input-form>
+
+      <fc-input-form [formControlVariable]="lastName"
+                      [inputElement]="inputSecondNameForm"
+                      [errorMessage]="alertErrors.name(lastName)"
+                      [label]="'Фамілія'">
+        <input #inputSecondNameForm type="text" required autocomplete="off" formControlName="lastName">
+      </fc-input-form>
+      <fc-input-form [formControlVariable]="password"
+                      [inputElement]="inputPassForm"
+                      [errorMessage]="alertErrors.password(password)"
+                      [label]="'Пароль'">
+        <input #inputPassForm type="password" required autocomplete="off" formControlName="password">
+      </fc-input-form>
+      <fc-input-form [formControlVariable]="confirmPassword"
+                      [inputElement]="inputConfirmPassForm"
+                      [errorMessage]="alertErrors.password(confirmPassword)"
+                      label='Підтвердити пароль'
+                      type='confirm-password'>
+        <input #inputConfirmPassForm type="password" required autocomplete="off" formControlName="confirmPassword">
+      </fc-input-form>
+    </div>
+    <fc-input-form [formControlVariable]="email"
+                    [inputElement]="inputEmail"
+                    [errorMessage]="alertErrors.email(email)"
+                    [label]="'Пошта'">
+      <input #inputEmail type="email" required autocomplete="off" formControlName="email">
+    </fc-input-form>
+
+    <fc-input-form [formControlVariable]="phone"
+                    [inputElement]="inputPhoneNumber"
+                    [errorMessage]="alertErrors.phone(phone)"
+                    [label]="'Телефон'">
+      <input #inputPhoneNumber type="text" required autocomplete="off" formControlName="phone">
+    </fc-input-form>
+      <button [disabled]="Form.invalid" class="btn-icon-contain form-btn status-btn --with-out-space" id="submit-button" type="submit"
+              (click)="Registration()" [class]="{'success': !Form.invalid,'disable': Form.invalid}">
+        Зберегти
+        <svg viewBox="0 0 100 100" width="25px"><path [attr.d]="svg.log_in"></path></svg>
+      </button>
+    <div class="radio-input-container link-content" (click)="goToLogin()">
+      <a class="link">Вже маєте акаунт?</a>
+    </div>
+  </form>
+</div>
+

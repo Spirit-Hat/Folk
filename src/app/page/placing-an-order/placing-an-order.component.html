@@ -1,0 +1,181 @@
+<div class="body-box">
+  <div class="main-container">
+    <form [formGroup]="mainForm" class="form-block">
+      <div class="btn-menu --with-out-space" *ngIf="!auth">
+        <button class="form-btn status-btn common --round --sub" (click)="authStatus = false">
+          Я новий покупець
+        </button>
+        <button class="form-btn status-btn common --round --sub" (click)="authStatus = true">
+          Я старий покупець
+        </button>
+      </div>
+      <section *ngIf="!auth && authStatus">
+        <fc-login>
+
+        </fc-login>
+      </section>
+      <section *ngIf="!auth && !authStatus">
+        <form [formGroup]="clientForm" class="form-block">
+          <h2>
+            Контактні дані
+          </h2>
+          <div class="form-inputs-container" style="--grid-column-n: 2">
+            <fc-input-form [formControlVariable]="firstName"
+                           [inputElement]="inputFirstName"
+                           [errorMessage]="formAlertControl.name(firstName)"
+                           [label]="'Ім\'я'">
+              <input #inputFirstName type="text" required autocomplete="off"
+                     formControlName="firstName">
+            </fc-input-form>
+
+            <fc-input-form [formControlVariable]="lastName"
+                           [inputElement]="inputSecondName"
+                           [errorMessage]="formAlertControl.name(lastName)"
+                           [label]="'Фамілія'">
+              <input #inputSecondName type="text" required autocomplete="off"
+                     formControlName="lastName">
+            </fc-input-form>
+
+          </div>
+          <div class="form-inputs-container" style="--grid-column-n: 2">
+
+            <fc-input-form [formControlVariable]="email"
+                           [inputElement]="inputEmail"
+                           [errorMessage]="formAlertControl.email(email)"
+                           [label]="'Пошта'">
+              <input #inputEmail type="email" required autocomplete="off"
+                     formControlName="email">
+            </fc-input-form>
+
+            <fc-input-form [formControlVariable]="phone"
+                           [inputElement]="inputPhoneNumber"
+                           [errorMessage]="formAlertControl.phone(phone)"
+                           [label]="'Телефон'">
+              <input #inputPhoneNumber type="text" required autocomplete="off"
+                     formControlName="phone">
+            </fc-input-form>
+          </div>
+          <button [disabled]="clientForm.invalid" class="status-btn form-btn" type="submit"
+                  [class]="{'success': !clientForm.invalid, 'disabled': clientForm.invalid}"
+                  (click)="saveClientsLocalData()">Зберегти
+          </button>
+        </form>
+      </section>
+      <section *ngIf="auth">
+        <form [formGroup]="clientForm" class="form-block">
+          <h2>
+            Ваші контактні дані
+          </h2>
+          <div class="form-inputs-container" style="--grid-column-n: 2">
+            <fc-input-form [formControlVariable]="firstName"
+                           [inputElement]="inputFirstName"
+                           [label]="'Ім\'я'">
+              <input #inputFirstName type="text" required autocomplete="off" readonly
+                     formControlName="firstName">
+            </fc-input-form>
+
+            <fc-input-form [formControlVariable]="lastName"
+                           [inputElement]="inputSecondName"
+                           [label]="'Фамілія'">
+              <input #inputSecondName type="text" required autocomplete="off" readonly
+                     formControlName="lastName">
+            </fc-input-form>
+
+          </div>
+          <div class="form-inputs-container" style="--grid-column-n: 2">
+
+            <fc-input-form [formControlVariable]="email"
+                           [inputElement]="inputEmail"
+                           [label]="'Пошта'">
+              <input #inputEmail type="email" required autocomplete="off" readonly
+                     formControlName="email">
+            </fc-input-form>
+
+            <fc-input-form [formControlVariable]="phone"
+                           [inputElement]="inputPhoneNumber"
+                           [label]="'Телефон'">
+              <input #inputPhoneNumber type="text" required autocomplete="off" readonly
+                     formControlName="phone">
+            </fc-input-form>
+          </div>
+        </form>
+      </section>
+      <section>
+        <div class="text-container">
+          <h2>Замовлення</h2>
+          <button class="btn-icon-contain" (click)="editOrder()">
+            Редагувати
+            <svg viewBox="0 0 100 100" width="18px">
+              <path [attr.d]="svg.rename_pen">
+
+              </path>
+            </svg>
+          </button>
+        </div>
+        <div class="product-list">
+          <fc-basket-item *ngFor="let item of orderList; let last = last"
+                          [item]="item" [simpleView]="true" [last]="last">
+
+          </fc-basket-item>
+        </div>
+      </section>
+      <section>
+        <h2>Доставка</h2>
+        <ul>
+          <li class="radio-container-box">
+            <div class="checkout-radio-box">
+              <input type="radio" name="eDeliveryType" id="pickUpInOurStores" value="SELF_PICKUP" checked
+                     formControlName="eDeliveryType">
+              <label for="pickUpInOurStores" class="checkout-label radio"><span>Забрати в наших магазинах</span></label>
+            </div>
+          </li>
+          <li class="radio-container-box">
+            <div class="checkout-radio-box">
+              <input type="radio" name="eDeliveryType" id="pickUpFromNovaPostha" value="NOVA_POSHTA"
+                     formControlName="eDeliveryType">
+              <label for="pickUpFromNovaPostha" class="checkout-label radio"><span>Забрати з Нової Пошти</span></label>
+            </div>
+          </li>
+          <li class="radio-container-box">
+            <div class="checkout-radio-box">
+              <input type="radio" name="eDeliveryType" id="courierDelivery" value="UA_POSHTA"
+                     formControlName="eDeliveryType">
+              <label for="courierDelivery" class="checkout-label radio"><span>Забрати з Укр пошти</span></label>
+            </div>
+          </li>
+        </ul>
+
+      </section>
+      <section>
+        <h2>Оплата</h2>
+        <ul>
+
+          <li class="radio-container-box">
+            <div class="checkout-radio-box">
+              <input type="radio" name="typePayment" id="pay" value="not" checked>
+              <label for="pay"
+                     class="checkout-label radio"><span>Оплатити під час отримання товару</span></label>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </form>
+    <section class="checkout-form side-menu">
+      <h1>Разом</h1>
+      <div class="text-container">
+        <p>{{totalAmount.value}}&nbsp;шт&nbsp;на&nbsp;суму</p>
+        <p>{{totalPrice.value}}&nbsp;₴</p>
+      </div>
+      <div class="line --sub"></div>
+      <div class="text-container">
+        <p>До сплати</p>
+        <p>{{totalPrice.value}}&nbsp;₴</p>
+      </div>
+
+      <button [disabled]="mainForm.invalid" class="status-btn form-btn" type="submit"
+              [class]="{'success': !mainForm.invalid, 'disabled': mainForm.invalid}"
+              (click)="confirmOrder()">Підтверждаю замовлення
+      </button>
+    </section>
+  </div>
+</div>

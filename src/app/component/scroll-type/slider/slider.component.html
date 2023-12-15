@@ -1,0 +1,66 @@
+<div class="body-box slider-contain"
+     [class]="{'horizontal-direction': direction == 'horizontal',
+                 'vertical-direction': direction == 'vertical'}">
+  <div class="main-container" #slider_contain>
+    <div class="slider-picture"
+         (mousedown)="sliderControlStart($event, slider_contain)"
+         (mousemove)="sliderControl($event, slider_contain)"
+         (mouseup)="sliderControlEnd($event, slider_contain)"
+
+         (touchstart)="sliderControlStart($event, slider_contain)"
+         (touchmove)="sliderControl($event, slider_contain)"
+         (touchend)="sliderControlEnd($event, slider_contain)"
+
+         (mouseleave)="UpdatePosition(slider_contain)">
+      <div class="header-banner" *ngFor="let slide of header_slider; index as i"
+           [class.preview-banner]="slide.start_preview"
+           [style]="{'left': direction == 'horizontal' ? getPosition(i, slider_contain) : '0px',
+                    'top': direction == 'vertical' ? getPosition(i, slider_contain) : '0px'}">
+        <div class="preview-box" *ngIf="slide.start_preview">
+          <div class="btn-icon title">
+            <svg routerLink="../" viewBox="0 0 31 100" height="160px" width="50px"><path [attr.d]="svg.title"></path></svg>
+            <h1 routerLink="about-us">
+              {{slide.start_preview}}
+            </h1>
+          </div>
+          <div *ngIf="window.innerWidth > 1250">
+            <p>
+              <b class="title">Folkcraft</b> - це мережа магазинів українських сувенірів та виробів, що пропонує широкий вибір вишиванок, рушників, глиняного розписного посуду та інших унікальних товарів, що символізують <b>національну культуру</b> та <b>традиції України</b>.
+            </p>
+            <p>
+              <b class="title">Folkcraft</b> пропонує <b>безкоштовну доставку по всій Україні</b>.
+            </p>
+            <p>
+              Зробіть свій дім більш затишним та оригінальним, оберіть із широкого асортименту унікальних товарів, що представлені на Folkcraft!
+            </p>
+          </div>
+          <button class="btn-icon-contain" routerLink="catalog">
+            ДО&nbsp;КАТАЛОГУ
+            <svg viewBox="0 0 100 100"><path [attr.d]="svg.arrow_right"></path></svg>
+          </button>
+        </div>
+        <img *ngIf="slide.src" [class]="slide.start_preview ? 'preview-img-block' :'slider-img'" [src]="slide.src"
+             [alt]="slide.title" [title]="slide.title">
+      </div>
+    </div>
+    <button (click)="onPreviousClick()" class="btn-slider prev-btn-icon" tabindex="1" title="Назад">
+      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 100 100"><path [attr.d]="svg.arrow_prev"></path></svg>
+    </button>
+    <button (click)="onNextClick()" class="btn-slider next-btn-icon" title="Далі">
+      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 100 100"><path [attr.d]="svg.arrow_next"></path></svg>
+    </button>
+    <div class="control-container">
+      <div class="dots-panel">
+        <button class="dot" [tabIndex]="2+i" [title]="slide.title"
+                *ngFor="let slide of header_slider; index as i" (click)="GiveSlide(i)"
+                [class]="i === currentSlide ? ' __active': ''">
+          <svg xmlns="http://www.w3.org/2000/svg" class="progress-circle-bar"
+               *ngIf="i === currentSlide">
+            <circle #progressCircle cx="15" cy="15" stroke-linecap="round"
+                    [style.--time-offset]="timeOffset(progressCircle)" r="10"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
