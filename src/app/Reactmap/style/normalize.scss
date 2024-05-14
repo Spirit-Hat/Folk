@@ -1,0 +1,29 @@
+body,
+div,
+p,
+section,
+footer,
+header,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+h6 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input,
+button,
+a {
+    outline: none;
+    border: 0;
+    background-color: none;
+}
+
+a {
+    text-decoration: none;
+}

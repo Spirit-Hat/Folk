@@ -51,6 +51,7 @@ import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 
 import helloAngular from "./TestReacComponent";
+import AppReact from "./Reactmap/AppReact";
 
 @Component({
   selector: 'fc-root',
@@ -95,7 +96,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (container) {
       // Use createRoot for React 18
       this.reactRoot = ReactDOMClient.createRoot(container);
-      this.reactRoot.render(React.createElement(helloAngular));
+      this.reactRoot.render(React.createElement(AppReact));
     } else {
       console.error('Target container is not a DOM element.');
     }
