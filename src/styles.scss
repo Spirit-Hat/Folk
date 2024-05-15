@@ -5,6 +5,11 @@
 @import "style/popup-layout";
 @import "style/header-box-layout";
 @import "style/btn-layout";
+@import "style/map-react";
+
+@import "app/Reactmap/components/list-of-regions/RegionList.scss";
+@import "app/Reactmap/components/side-bar-menu/SidebarMenu.scss";
+@import "app/Reactmap/components/map/ukraine-folk-map/UkraineFolkMap.scss";
 
 .form-container {
   .form-input-container{

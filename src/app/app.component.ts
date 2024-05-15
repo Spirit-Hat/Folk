@@ -49,9 +49,10 @@
 import {Component, OnInit, OnDestroy, ElementRef, HostListener} from '@angular/core';
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
-
+import "./Reactmap/App.css"
 import helloAngular from "./TestReacComponent";
 import AppReact from "./Reactmap/AppReact";
+import BodyWrapper from "./Reactmap/components/BodyWrapper";
 
 @Component({
   selector: 'fc-root',
