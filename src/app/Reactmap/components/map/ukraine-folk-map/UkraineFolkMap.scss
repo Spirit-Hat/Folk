@@ -1,166 +1,169 @@
 @font-face {
-    font-family: blackadder itc;
-    font-style: normal;
-    font-weight: 400;
-    src: local('Blackadder ITC'), url(https://fonts.cdnfonts.com/s/62893/BITCBLKAD.woff) format('woff')
+  font-family: blackadder itc;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Blackadder ITC'), url(https://fonts.cdnfonts.com/s/62893/BITCBLKAD.woff) format('woff')
 }
 
 @font-face {
-    font-family: blackadder itc tt;
-    font-style: normal;
-    font-weight: 400;
-    src: local('Blackadder ITC TT'), url(https://fonts.cdnfonts.com/s/62893/BLACI.woff) format('woff')
+  font-family: blackadder itc tt;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Blackadder ITC TT'), url(https://fonts.cdnfonts.com/s/62893/BLACI.woff) format('woff')
 }
 
 @font-face {
-    font-family: blackadder itc std;
-    font-style: normal;
-    font-weight: 400;
-    src: local('Blackadder ITC Std'), url('https://fonts.cdnfonts.com/s/62893/Blackadder ITC Std Regular.woff') format('woff')
+  font-family: blackadder itc std;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Blackadder ITC Std'), url('https://fonts.cdnfonts.com/s/62893/Blackadder ITC Std Regular.woff') format('woff')
 }
 
 .map-wrapper {
-    overflow: hidden;
-    width: 100%;
-    display: flex;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    background-color: #E1E1E1;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  padding: 3rem;
+  margin: 0;
+  background-color: rgb(253, 241, 229)
 }
 
 .ukraine-folk-map-body {
-    padding: 0;
-    margin: 0;
-    transform: scale(var(--scale)) translateX(var(--offset-x)) translateY(var(--offset-y));
-    width: 100%;
-    height: 100%;
-    max-height: 100vh;
+  padding: 0;
+  margin: 0;
+  transform: scale(var(--scale)) translateX(var(--offset-x)) translateY(var(--offset-y));
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
 
-    .st0 {
-        fill-rule: evenodd;
-        clip-rule: evenodd;
-        fill: #E1E1E1;
-    }
+  .st0 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: rgb(253, 241, 229);
+  }
 
-    .st1 {
-        background-position: right bottom, left top;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 1024 1024%27%3E%3Cimage width=%271024%27 height=%271024%27 href=%27http://localhost:3000/images/seamless-texture/ukraine-folk.webp %27%3E%3C/image%3E%3C/svg%3E");
-        background-repeat: repeat;
-        fill: #f7f7f7;
-    }
+  .st1 {
+    background-position: right bottom, left top;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 1024 1024%27%3E%3Cimage width=%271024%27 height=%271024%27 href=%27http://localhost:3000/images/seamless-texture/ukraine-folk.webp %27%3E%3C/image%3E%3C/svg%3E");
+    background-repeat: repeat;
+    fill: #f7f7f7;
+  }
 
-    .st2 {
-        fill-rule: evenodd;
-        clip-rule: evenodd;
-        fill: #C7EDFF;
-    }
+  .st2 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #C7EDFF;
+  }
 
-    .st3 {
-        fill-rule: evenodd;
-        clip-rule: evenodd;
-        fill: #C7EDFF;
-        stroke: #0978AC;
-        stroke-width: 0.7087;
-        stroke-linejoin: round;
-        stroke-miterlimit: 3.8637;
-    }
+  .st3 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #C7EDFF;
+    stroke: #0978AC;
+    stroke-width: 0.7087;
+    stroke-linejoin: round;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st4 {
-        fill: none;
-        stroke: #0978AC;
-        stroke-width: 0.7087;
-        stroke-linejoin: round;
-        stroke-miterlimit: 3.8637;
-    }
+  .st4 {
+    fill: none;
+    stroke: #0978AC;
+    stroke-width: 0.7087;
+    stroke-linejoin: round;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st5 {
-        fill: none;
-        stroke: #646464;
-        stroke-width: 2.5512;
-        stroke-linejoin: round;
-        stroke-miterlimit: 3.8637;
-    }
+  .st5 {
+    fill: none;
+    stroke: #646464;
+    stroke-width: 2.5512;
+    stroke-linejoin: round;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st6 {
-        fill: none;
-        stroke: #9c9c9c;
-        stroke-width: 0.7087;
-        stroke-linejoin: round;
-        stroke-miterlimit: 3.8637;
-    }
+  .st6 {
+    fill: none;
+    stroke: #9c9c9c;
+    stroke-width: 0.7087;
+    stroke-linejoin: round;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st7 {
-        fill: none;
-        stroke: #0978AC;
-        stroke-width: 1.1339;
-        stroke-linejoin: round;
-        stroke-miterlimit: 3.8637;
-    }
+  .st7 {
+    fill: none;
+    stroke: #0978AC;
+    stroke-width: 1.1339;
+    stroke-linejoin: round;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st8 {
-        fill: none;
-        stroke: #0978AC;
-        stroke-width: 1.1339;
-        stroke-miterlimit: 3.8637;
-    }
+  .st8 {
+    fill: none;
+    stroke: #0978AC;
+    stroke-width: 1.1339;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st9 {
-        fill: none;
-        stroke: #0978AC;
-        stroke-miterlimit: 3.8637;
-    }
+  .st9 {
+    fill: none;
+    stroke: #0978AC;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st10 {
-        fill: none;
-        stroke: #0978AC;
-        stroke-width: 0.8504;
-        stroke-miterlimit: 3.8637;
-    }
+  .st10 {
+    fill: none;
+    stroke: #0978AC;
+    stroke-width: 0.8504;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st11 {
-        fill: none;
-        stroke: #646464;
-        stroke-width: 1.7008;
-        stroke-linejoin: round;
-        stroke-miterlimit: 3.8637;
-        stroke-dasharray: 9.9213, 2.2677;
-    }
+  .st11 {
+    fill: none;
+    stroke: #646464;
+    stroke-width: 1.7008;
+    stroke-linejoin: round;
+    stroke-miterlimit: 3.8637;
+    stroke-dasharray: 9.9213, 2.2677;
+  }
 
-    .st12 {
-        fill: none;
-        stroke: #646464;
-        stroke-width: 0.709;
-        stroke-linejoin: round;
-        stroke-miterlimit: 3.8637;
-    }
+  .st12 {
+    fill: none;
+    stroke: #646464;
+    stroke-width: 0.709;
+    stroke-linejoin: round;
+    stroke-miterlimit: 3.8637;
+  }
 
-    .st13 {
-        fill: none;
-    }
+  .st13 {
+    fill: none;
+  }
 
-    .st14 {
-        fill: #020202;
-    }
+  .st14 {
+    fill: #020202;
+  }
 
-    .st15 {
-        fill: none;
-        stroke: #000000;
-        stroke-miterlimit: 10;
-    }
+  .st15 {
+    fill: none;
+    stroke: #000000;
+    stroke-miterlimit: 10;
+  }
 
-    .st17 {
-        user-select: none;
-        transform-origin: center;
-        font-family: 'Blackadder ITC';
-    }
-    .st18 {
-        font-size: 22px;
-    }
-    .icon-coat-of-arms{
-        cursor: pointer;
-    }
-    .--hover-region {
-        fill: var(--light-blue, rgba(153, 153, 243, 0.822));
-    }
+  .st17 {
+    user-select: none;
+    transform-origin: center;
+    font-family: 'Blackadder ITC';
+  }
+
+  .st18 {
+    font-size: 22px;
+  }
+
+  .icon-coat-of-arms {
+    cursor: pointer;
+  }
+
+  .--hover-region {
+    fill: var(--light-blue, rgba(153, 153, 243, 0.822));
+  }
 }

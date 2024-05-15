@@ -1,7 +1,6 @@
 .body-wrapper {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1545.7/1038.5;
+
   .map-content-wrapper {
     display: flex;
     flex-direction: row;
@@ -25,7 +24,7 @@
     min-width: 340px;
     padding-left: 1rem;
     &.absolute-position{
-      background-color: var(--bg-color, #cecece);
+      background-color: rgb(225, 193, 183);
       padding: 1rem;
       position: absolute;
       bottom: 1rem;

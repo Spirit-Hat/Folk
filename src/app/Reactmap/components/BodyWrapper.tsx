@@ -1,5 +1,4 @@
 import { useLayoutEffect, useState } from "react";
-import "./BodyWrapper.scss";
 import UkraineFolkMap from "./map/ukraine-folk-map/UkraineFolkMap";
 import RegionList from "./list-of-regions/RegionList";
 import ScaleMapInput from "./map/scale-input/ScaleMapInput";
